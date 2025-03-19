@@ -332,11 +332,7 @@ user_data <- raw_user_data %>%
 
 user_data <- user_data %>%
   mutate(
-    accuracy = ((hits_adult + hits_site) / (total_adult + total_site)) * 100,
-    accuracy2 = ((hits_adult + hits_site + maybes_adult) / (total_adult + total_site)) * 100,
-    accuracy3 = (hits_adult / total_adult) * 100,
-    score = (adult_score + site_score + bite_score)
-  )
+    accuracy = ((hits_adult + hits_site + maybes_adult) / (total_adult + total_site)) * 100)
 
 
 ## Reports Data ------------------------------------------------------------
@@ -630,6 +626,9 @@ run_simple_regressions <- function(data, dv, predictors) {
 
   
  
+
+
+ 
 ### Active Duration -------------------------------------------------------- 
 
 regression_results <- run_simple_regressions(
@@ -645,39 +644,6 @@ print(regression_results$summary_table)
 #both promotion and prevention had the only significant p-values showing the most reliable 
 #observed relationship with active participation duration
 
-
-
-### Total Reports Filled ---------------------------------------------------
-
-regression_results <- run_simple_regressions(
-  data = data, 
-  dv = "Registered_Total_Reports", 
-  predictors = predictors
-)
-
-print(regression_results$results)
-
-print(regression_results$summary_table)
-
-
-#the promotion and prevention could not predict the number of reports filled by the user properly, best predictors were
-# routine, social expanison,teaching, benevolence and universalism nature.
-### Score ----------------------------------------------------
-
-regression_results <- run_simple_regressions(
-  data = data, 
-  dv = "score", 
-  predictors = predictors
-)
-
-print(regression_results$results)
-
-print(regression_results$summary_table)
-
-
-#the promotion and prevention could not predict the number of reports filled by the user properly, best predictors were
-# routine, social expanison,teaching, benevolence and universalism nature.
-
 ### Accuracy ---------------------------------------------------------------
 
 regression_results <- run_simple_regressions(
@@ -692,34 +658,3 @@ print(regression_results$summary_table)
 
 
 # non of the variables seemed to be significant except for hedonism, prevention in 5th place
-
-
-### Accuracy2 ---------------------------------------------------------------
-
-regression_results <- run_simple_regressions(
-  data = data, 
-  dv = "accuracy2", 
-  predictors = predictors
-)
-
-print(regression_results$results)
-
-print(regression_results$summary_table)
-
-
-# non of the variables seemed to be significant 
-
-### Accuracy3 ---------------------------------------------------------------
-
-regression_results <- run_simple_regressions(
-  data = data, 
-  dv = "accuracy3", 
-  predictors = predictors
-)
-
-print(regression_results$results)
-
-print(regression_results$summary_table)
-
-
-# non of the variables seemed to be significant, bad
