@@ -1,4 +1,4 @@
-# FOR Correlation and Regression   ------------------------------------------------
+
 
 ## Load necessary package -------
 library(pwr)
